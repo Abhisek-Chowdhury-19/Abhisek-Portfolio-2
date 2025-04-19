@@ -52,7 +52,7 @@ Full Stack Developer Based in Kolkata,India.
     </div>
       </div>
       <Swiper
-        slidesPerView={7}
+        
         spaceBetween={10}
         loop={true}
         autoplay={{
@@ -63,8 +63,22 @@ Full Stack Developer Based in Kolkata,India.
         className="mySwiper"
         style={{ overflow: "hidden" }}
       >
-        {Array.from({ length: 10 }, (_, index) => (
-          <SwiperSlide key={index}>Slide {index + 1}</SwiperSlide>
+        {[
+          "https://picsum.photos/id/1015/200/300",
+          "https://picsum.photos/id/1016/200/300",
+          "https://picsum.photos/id/1017/200/300",
+          "https://picsum.photos/id/1018/200/300",
+          "https://picsum.photos/id/1019/200/300",
+          "https://picsum.photos/id/1020/200/300",
+          "https://picsum.photos/id/1021/200/300",
+          "https://picsum.photos/id/1022/200/300",
+          "https://picsum.photos/id/1023/200/300",
+          "https://picsum.photos/id/1024/200/300",
+        ].map((img, index) => (
+          <SwiperSlide
+            key={index}
+            style={{ backgroundImage: `url(${img})`, backgroundSize: "cover"  } }
+          ></SwiperSlide>
         ))}
       </Swiper>
    <Work />

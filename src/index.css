@@ -33,13 +33,7 @@
     align-items: center;
 }
 
-.swiper-slide:nth-child(even) {
-    transform: rotate(4deg) scale(0.9);
-}
 
-.swiper-slide:nth-child(odd) {
-    transform: rotate(-2deg) scale(0.9);
-}
 
 .swiper-slide img {
     display: block;
