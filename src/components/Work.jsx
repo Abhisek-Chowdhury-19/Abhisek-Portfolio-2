@@ -94,13 +94,12 @@ function Work() {
             Work<span className="text-cyan-500">.</span>
           </h1>
           <div className="card py-4 px-4 rounded-lg drop-shadow-lg mt-6 w-3/2 bg-slate-200 dark:bg-zinc-800">
-              <img
-                src="https://www.snuniv.ac.in/assets/images/logo-wide.png"
-                className="w-1/4 my-4  object-contain"
-                alt=""
-              />
+            <img
+              src="https://www.snuniv.ac.in/assets/images/logo-wide.png"
+              className="w-[100px] my-4  object-contain"
+              alt=""
+            />
             <div className="workdata flex flex-row justify-between flex-wrap">
-
               <h2 className="text-lg w-6/12 font-bold dark:text-white">
                 Sister Nivedita University || Techno India Group
               </h2>
@@ -113,11 +112,11 @@ function Work() {
             </div>
             <br />
             <br />
-              <img
-                src="https://thewebtrix.co.uk/assets/twt-8132f007.png"
-                className="w-1/4 my-4  object-contain"
-                alt=""
-              />
+            <img
+              src="https://thewebtrix.co.uk/assets/twt-8132f007.png"
+              className="w-[100px] my-4  object-contain"
+              alt=""
+            />
             <div className="workdata flex flex-row justify-between flex-wrap">
               <h2 className="text-lg w-6/12 font-bold dark:text-white">
                 The Webtrix Limited
