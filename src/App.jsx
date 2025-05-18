@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <AnimatedCursor
-        className="hidden md:block"
+        className="md:hidden"
         // innerSize={20}
         outerSize={50}
         color="0, 200, 255"

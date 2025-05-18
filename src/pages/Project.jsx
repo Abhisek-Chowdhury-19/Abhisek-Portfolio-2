@@ -3,6 +3,26 @@ import Nav from "../components/Nav";
 import Page from "../components/page";
 import Footer from "../components/footer";
 import Pcard from "../components/pcard";
+import ikbfss from "../assets/workss/ikbf.png";
+import aajkaal from "../assets/workss/aajkaal.png";
+import ananya from "../assets/workss/ananya.png";
+import apai from "../assets/workss/apai.png";
+import conclave from "../assets/workss/conclave.png";
+import gomobile from "../assets/workss/gomobile.png";
+import handyman from "../assets/workss/handyman.png";
+import lorabeauty from "../assets/workss/lorabeauty.png";
+import onex from "../assets/workss/onex.png";
+import tiut from "../assets/workss/tiut.png";
+import manchestermobiletyre from "../assets/workss/manchestermobiletyre.png";
+import samharo from "../assets/workss/samharo.png";
+import snupost from "../assets/workss/snupost.png";
+import thewebtrix from "../assets/workss/thewebtrix.png";
+import unifest from "../assets/workss/unifest.png";
+import snuch from "../assets/workss/snuch.png";
+import braintonic from "../assets/workss/braintonic.png";
+import thesoumiscanproduct from "../assets/workss/thesoumi.png";
+import surge from "../assets/workss/surge.png";
+import hana from "../assets/workss/hana.png";
 function Project() {
   return (
     <>
@@ -12,11 +32,16 @@ function Project() {
           <h1 className="text-4xl w-3/5 font-bold dark:text-white max-lg:w-full">
             Things I’ve made trying to put my dent in the universe.
           </h1>
-          <h2 className="text-3xl mt-6 dark:text-white">Projects</h2>
+          <h2 className="text-3xl mt-6 dark:text-white">My Projects</h2>
         </div>
 
         <div className="projects flex flex-row justify-evenly flex-wrap">
           <Pcard>
+            <img
+              src={ikbfss}
+              alt="International Kolkata Book Fair"
+              className="rounded-t-md my-2"
+            />
             <h2 className=" font-bold text-3xl dark:text-white">
               International Kolkata Book Fair
             </h2>
@@ -33,6 +58,11 @@ function Project() {
             </div>
           </Pcard>
           <Pcard>
+            <img
+              src={ananya}
+              alt="International Kolkata Book Fair"
+              className="rounded-t-md my-2"
+            />
             <h2 className=" font-bold text-3xl dark:text-white">Ananya Care</h2>
             <p className="mt-1 text-sm dark:text-gray-400">
               Crafted a website for Ananya Banerjee, a politician from Ward 109,
@@ -40,13 +70,18 @@ function Project() {
               achievements.
             </p>
             <div className="p-links text-xl flex gap-2  dark:text-white mt-3 ">
-              <a href="https://anayacare.in/" target="_blank">
+              <a href="https://ananyacare.in/" target="_blank">
                 <i class="bi bi-link-45deg text-2xl group-hover:text-cyan-600"></i>{" "}
                 Link
               </a>
             </div>
           </Pcard>
           <Pcard>
+            <img
+              src={conclave}
+              alt="International Kolkata Book Fair"
+              className="rounded-t-md my-2"
+            />
             <h2 className=" font-bold text-3xl dark:text-white">
               SNU Conclave
             </h2>
@@ -62,6 +97,11 @@ function Project() {
             </div>
           </Pcard>
           <Pcard>
+            <img
+              src={snupost}
+              alt="International Kolkata Book Fair"
+              className="rounded-t-md my-2"
+            />
             <h2 className=" font-bold text-3xl dark:text-white">SNUPOST</h2>
             <p className="mt-1 text-sm dark:text-gray-400">
               Crafted a website for SNUPOST, a blogging platform for students of
@@ -76,6 +116,11 @@ function Project() {
             </div>
           </Pcard>
           <Pcard>
+            <img
+              src={unifest}
+              alt="International Kolkata Book Fair"
+              className="rounded-t-md my-2"
+            />
             <h2 className=" font-bold text-3xl dark:text-white">
               38th AIU Inter University East Zone Youth Festival
             </h2>
@@ -85,13 +130,18 @@ function Project() {
               schedule, participating teams, results, and photo gallery.
             </p>
             <div className="p-links text-xl flex gap-2  dark:text-white mt-3 ">
-              <a href="https://38thaiuezyf.snumcaj.com/" target="_blank">
+              <a href="https://unifest.snuniv.ac.in/" target="_blank">
                 <i class="bi bi-link-45deg text-2xl group-hover:text-cyan-600"></i>{" "}
                 Link
               </a>
             </div>
           </Pcard>
           <Pcard>
+            <img
+              src={snuch}
+              alt="International Kolkata Book Fair"
+              className="rounded-t-md my-2"
+            />
             <h2 className=" font-bold text-3xl dark:text-white">
               SNU Chronicle
             </h2>
@@ -107,6 +157,11 @@ function Project() {
             </div>
           </Pcard>
           <Pcard>
+            <img
+              src={apai}
+              alt="International Kolkata Book Fair"
+              className="rounded-t-md my-2"
+            />
             <h2 className="font-bold text-3xl dark:text-white">
               Association of Professional Academic Institutions
             </h2>
@@ -122,6 +177,11 @@ function Project() {
             </div>
           </Pcard>
           <Pcard>
+            <img
+              src={surge}
+              alt="International Kolkata Book Fair"
+              className="rounded-t-md my-2"
+            />
             <h2 className="font-bold text-3xl dark:text-white">SNU Surge</h2>
             <p className="mt-1 text-sm dark:text-gray-400">
               Crafted a website for SNU Surge, a consultancy project run by SNU,
@@ -135,6 +195,11 @@ function Project() {
             </div>
           </Pcard>
           <Pcard>
+            <img
+              src={samharo}
+              alt="International Kolkata Book Fair"
+              className="rounded-t-md my-2"
+            />
             <h2 className="font-bold text-3xl dark:text-white">SNU Samaroho</h2>
             <p className="mt-1 text-sm dark:text-gray-400">
               Crafted a website for Samaroho, a Bengali magazine run by SNU,
@@ -148,6 +213,11 @@ function Project() {
             </div>
           </Pcard>
           <Pcard>
+            <img
+              src={aajkaal}
+              alt="International Kolkata Book Fair"
+              className="rounded-t-md my-2"
+            />
             <h2 className="font-bold text-3xl dark:text-white">Aajkaal</h2>
             <p className="mt-1 text-sm dark:text-gray-400">
               Developed feature pages for Aajkaal, including a variety of
@@ -161,6 +231,11 @@ function Project() {
             </div>
           </Pcard>
           <Pcard>
+            <img
+              src={braintonic}
+              alt="International Kolkata Book Fair"
+              className="rounded-t-md my-2"
+            />
             <h2 className="font-bold text-3xl dark:text-white">Braintonic</h2>
             <p className="mt-1 text-sm dark:text-gray-400">
               Crafted a website for SNU Comic Club, showcasing their comics,
@@ -174,6 +249,11 @@ function Project() {
             </div>
           </Pcard>
           <Pcard>
+            <img
+              src={tiut}
+              alt="International Kolkata Book Fair"
+              className="rounded-t-md my-2"
+            />
             <h2 className="font-bold text-3xl dark:text-white">
               Techno India University Tripura
             </h2>
@@ -189,6 +269,11 @@ function Project() {
             </div>
           </Pcard>
           <Pcard>
+            <img
+              src={thesoumiscanproduct}
+              alt="International Kolkata Book Fair"
+              className="rounded-t-md my-2"
+            />
             <h2 className="font-bold text-3xl dark:text-white">
               The Soumi's Can Product
             </h2>
@@ -207,6 +292,34 @@ function Project() {
             </div>
           </Pcard>
           <Pcard>
+            <img
+              src={hana}
+              alt="International Kolkata Book Fair"
+              className="rounded-t-md my-2"
+            />
+            <h2 className="font-bold text-3xl dark:text-white">
+              The Hana Beauty
+            </h2>
+            <p className="mt-1 text-sm dark:text-gray-400">
+              Redesigned the website from scratch, developed features like
+              related products, redesigned the homepage, product categories,
+              pinned products, and optimized the website's performance by
+              writing optimized queries and implementing caching. The website
+              now has a better user experience and loads much faster.
+            </p>
+            <div className="p-links text-xl flex gap-2 dark:text-white mt-3">
+              <a href="https://thehanabeauty.com/" target="_blank">
+                <i class="bi bi-link-45deg text-2xl group-hover:text-cyan-600"></i>
+                Link
+              </a>
+            </div>
+          </Pcard>
+          <Pcard>
+            <img
+              src={thewebtrix}
+              alt="International Kolkata Book Fair"
+              className="rounded-t-md my-2"
+            />
             <h2 className=" font-bold text-3xl dark:text-white">The Webtrix</h2>
             <p className="mt-1 text-sm dark:text-gray-400">
               Created a comprehensive and responsive website for a leading

@@ -9,6 +9,20 @@ import { Autoplay, FreeMode, Pagination } from "swiper/modules";
 
 import Footer from "../components/footer";
 import Work from "../components/Work";
+import ikbfss from "../assets/workss/ikbf.png";
+import aajkaal from "../assets/workss/aajkaal.png";
+import ananya from "../assets/workss/ananya.png";
+import apai from "../assets/workss/apai.png";
+import conclave from "../assets/workss/conclave.png";
+import gomobile from "../assets/workss/gomobile.png";
+import handyman from "../assets/workss/handyman.png";
+import lorabeauty from "../assets/workss/lorabeauty.png";
+import onex from "../assets/workss/onex.png";
+import tiut from "../assets/workss/tiut.png";
+import manchestermobiletyre from "../assets/workss/manchestermobiletyre.png";
+import samharo from "../assets/workss/samharo.png";
+import snupost from "../assets/workss/snupost.png";
+import thewebtrix from "../assets/workss/thewebtrix.png";
 function Home() {
   return (
     <>
@@ -51,34 +65,51 @@ function Home() {
           </div>
         </div>
         <Swiper
-          slidesPerView={6}
-          spaceBetween={10}
           loop={true}
+          spaceBetween={20}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
           }}
+          speed={800}
+          centeredSlides={true}
+          grabCursor={true}
+          touchRatio={1}
           modules={[Autoplay, Pagination]}
           className="mySwiper"
           style={{ overflow: "hidden" }}
+          slidesPerView={1}
+          slidesPerGroup={1}
+          breakpoints={{
+            768: {
+              slidesPerView: 4,
+              slidesPerGroup: 1,
+              centeredSlides: true, // Optional: unset centering for larger screens
+            },
+          }}
         >
           {[
-            "https://picsum.photos/id/1015/200/300",
-            "https://picsum.photos/id/1016/200/300",
-            "https://picsum.photos/id/1017/200/300",
-            "https://picsum.photos/id/1018/200/300",
-            "https://picsum.photos/id/1019/200/300",
-            "https://picsum.photos/id/1020/200/300",
-            "https://picsum.photos/id/1021/200/300",
-            "https://picsum.photos/id/1022/200/300",
-            "https://picsum.photos/id/1023/200/300",
-            "https://picsum.photos/id/1024/200/300",
+            ikbfss,
+            aajkaal,
+            ananya,
+            apai,
+            conclave,
+            gomobile,
+            handyman,
+            lorabeauty,
+            onex,
+            tiut,
+            manchestermobiletyre,
+            samharo,
+            snupost,
+            thewebtrix,
           ].map((img, index) => (
             <SwiperSlide
               key={index}
               style={{
                 backgroundImage: `url(${img})`,
                 backgroundSize: "cover",
+                backgroundPosition: "center",
               }}
             ></SwiperSlide>
           ))}

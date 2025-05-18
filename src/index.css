@@ -11,27 +11,24 @@
     color: transparent;
 }
 
-
 .swiper {
     width: 100%;
     overflow: hidden;
-
-
 }
 
 .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: rgb(247, 247, 247);
     height: 300px;
     border-radius: 10px;
-
-    width: 400px !important;
-    color: var(--textcolor) !important;
+    background: rgb(247, 247, 247);
     display: flex;
     justify-content: center;
     align-items: center;
+    will-change: transform;
+    transition: transform 0.3s ease;
+
+    margin: auto;
 }
+
 
 
 
@@ -48,13 +45,4 @@
     flex-direction: row;
     justify-content: space-between;
 
-}
-
-@media (max-width: 1024px) {
-    .swiper {
-        width: 100%;
-        overflow: hidden;
-        margin-left: 0%;
-        height: 110%;
-    }
 }
