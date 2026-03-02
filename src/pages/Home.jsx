@@ -593,7 +593,12 @@ function Home() {
             <p className="py-3 text-gray-500 text-sm sm:text-base">
               International Kolkata Bookfair
             </p>
-            <div className="relative overflow-hidden rounded-lg">
+            <div
+              className="relative overflow-hidden rounded-lg"
+              onClick={() =>
+                window.open("https://www.kolkatabookfair.net/", "_blank")
+              }
+            >
               <img
                 src={workimg1}
                 className="w-full object-cover h-[250px] sm:h-[300px] md:h-[350px]"
@@ -610,7 +615,10 @@ function Home() {
           {/* Card 2 */}
           <div className="w-full md:w-1/2 px-4 py-4 work-card flex flex-col group relative overflow-hidden">
             <p className="py-3 text-gray-500 text-sm sm:text-base">Aajkaal</p>
-            <div className="relative overflow-hidden rounded-lg">
+            <div
+              className="relative overflow-hidden rounded-lg"
+              onClick={() => window.open("https://aajkaal.in/", "_blank")}
+            >
               <img
                 src={workimg2}
                 className="w-full object-cover h-[250px] sm:h-[300px] md:h-[350px]"
@@ -629,7 +637,12 @@ function Home() {
             <p className="py-3 text-gray-500 text-sm sm:text-base">
               The Soumis Can Product
             </p>
-            <div className="relative overflow-hidden rounded-lg">
+            <div
+              className="relative overflow-hidden rounded-lg"
+              onClick={() =>
+                window.open("https://thesoumiscanproduct.com/", "_blank")
+              }
+            >
               <img
                 src={workimg3}
                 className="w-full object-cover h-[250px] sm:h-[300px] md:h-[350px]"
@@ -648,7 +661,12 @@ function Home() {
             <p className="py-3 text-gray-500 text-sm sm:text-base">
               Techno Global Hospital Barrackpore
             </p>
-            <div className="relative overflow-hidden rounded-lg">
+            <div
+              className="relative overflow-hidden rounded-lg"
+              onClick={() =>
+                window.open("https://technoglobalhospital.com/", "_blank")
+              }
+            >
               <img
                 src={workimg4}
                 className="w-full object-cover h-[250px] sm:h-[300px] md:h-[350px]"
