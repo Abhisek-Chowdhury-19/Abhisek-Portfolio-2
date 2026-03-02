@@ -17,11 +17,9 @@ This is a personal portfolio website built with Vite.
 ## Production
 
 - Run `npm run build` to build the application
-- Run `npm run preview` to preview the production build
+- Run `npm run dev` to preview the production build
 
-## Deploy
 
-- Run `npm run deploy` to deploy the application to GitHub Pages
 
 ## License
 
