@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-roboto: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #e7e7e7;
+}
+
+.timeline {
+  --progress: 0%;
+
+  width: 2px;
+
+
+  /* Base color */
+  background: linear-gradient(to bottom,
+      #eddc53 var(--progress),
+      #6a7282 var(--progress));
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-wave-link {
+  display: flex;
+}
+
+/* Letter animation structure */
+.nav-wave-link span {
+  position: relative;
+  display: inline-block;
+
+  overflow: hidden;
+}
+
+.nav-wave-link span i {
+  display: block;
+  font-style: normal;
+  transition: transform 0.4s ease;
+}
+
+/* Second letter hidden below */
+.nav-wave-link span i:last-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(100%);
+}
+
+/* Hover animation */
+.nav-wave-link:hover span i:first-child {
+  transform: translateY(-100%);
+}
+
+.nav-wave-link:hover span i:last-child {
+  transform: translateY(0);
+}
+
+/* Delay effect per letter */
+.nav-wave-link:hover span:nth-child(1) i {
+  transition-delay: 0s;
+}
+
+.nav-wave-link:hover span:nth-child(2) i {
+  transition-delay: 0.05s;
+}
+
+.nav-wave-link:hover span:nth-child(3) i {
+  transition-delay: 0.1s;
+}
+
+.nav-wave-link:hover span:nth-child(4) i {
+  transition-delay: 0.15s;
+}
+
+.nav-wave-link:hover span:nth-child(5) i {
+  transition-delay: 0.2s;
+}
+
+.nav-wave-link:hover span:nth-child(6) i {
+  transition-delay: 0.25s;
+}
+
+.nav-wave-link:hover span:nth-child(7) i {
+  transition-delay: 0.3s;
+}
+
+.nav-wave-link:hover span:nth-child(8) i {
+  transition-delay: 0.35s;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 200s linear infinite;
+}
+
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee 200s linear infinite reverse;
+}
