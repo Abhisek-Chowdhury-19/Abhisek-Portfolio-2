@@ -594,7 +594,7 @@ function Home() {
               International Kolkata Bookfair
             </p>
             <div
-              className="relative overflow-hidden rounded-lg"
+              className="relative overflow-hidden rounded-lg cursor-pointer"
               onClick={() =>
                 window.open("https://www.kolkatabookfair.net/", "_blank")
               }
@@ -616,7 +616,7 @@ function Home() {
           <div className="w-full md:w-1/2 px-4 py-4 work-card flex flex-col group relative overflow-hidden">
             <p className="py-3 text-gray-500 text-sm sm:text-base">Aajkaal</p>
             <div
-              className="relative overflow-hidden rounded-lg"
+              className="relative overflow-hidden rounded-lg cursor-pointer"
               onClick={() => window.open("https://aajkaal.in/", "_blank")}
             >
               <img
@@ -634,11 +634,11 @@ function Home() {
 
           {/* Card 3 */}
           <div className="w-full md:w-1/2 px-4 py-4 work-card flex flex-col group relative overflow-hidden">
-            <p className="py-3 text-gray-500 text-sm sm:text-base">
+            <p className="py-3 text-gray-500 text-sm sm:text-base ">
               The Soumis Can Product
             </p>
             <div
-              className="relative overflow-hidden rounded-lg"
+              className="relative overflow-hidden rounded-lg cursor-pointer"
               onClick={() =>
                 window.open("https://thesoumiscanproduct.com/", "_blank")
               }
@@ -662,7 +662,7 @@ function Home() {
               Techno Global Hospital Barrackpore
             </p>
             <div
-              className="relative overflow-hidden rounded-lg"
+              className="relative overflow-hidden rounded-lg cursor-pointer"
               onClick={() =>
                 window.open("https://technoglobalhospital.com/", "_blank")
               }
