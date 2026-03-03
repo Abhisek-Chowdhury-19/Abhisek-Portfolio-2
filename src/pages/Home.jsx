@@ -124,7 +124,7 @@ function Home() {
     pin: true,
     anticipatePin: 1,
     invalidateOnRefresh: true, // 🔥 IMPORTANT
-    markers: true,
+    // markers: true,
   },
 });
 
