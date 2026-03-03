@@ -110,18 +110,23 @@ function Home() {
     const isMobile = viewportWidth < 1024;
     const scrollWidth = isMobile ? 0 : track.scrollWidth;
 
-    gsap.to(track, {
-      x: isMobile ? 0 : -(scrollWidth - viewportWidth * 0.9),
-
-      scrollTrigger: {
-        trigger: section,
-        start: "top top",
-        end: () => `+=${scrollWidth * 0.5}`,
-        scrub: 0.3,
-        pin: true,
-        anticipatePin: 1,
-      },
-    });
+   gsap.to(track, {
+  x: () => {
+    const scrollWidth = track.scrollWidth;
+    const viewportWidth = window.innerWidth;
+    return -(scrollWidth - viewportWidth * 0.9);
+  },
+  scrollTrigger: {
+    trigger: section,
+    start: "top top",
+    end: () => `+=${track.scrollWidth}`,
+    scrub: 0.3,
+    pin: true,
+    anticipatePin: 1,
+    invalidateOnRefresh: true, // 🔥 IMPORTANT
+    markers: true,
+  },
+});
 
     gsap.to(timelineRef.current, {
       "--progress": "100%",
