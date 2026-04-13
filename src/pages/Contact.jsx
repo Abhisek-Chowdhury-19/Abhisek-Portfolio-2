@@ -1,77 +1,220 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+import gsap from "gsap";
 
 function Contact() {
+  const headingRef = useRef(null);
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline();
+    tl.fromTo(
+      headingRef.current,
+      { y: 60, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: "power4.out", delay: 0.3 }
+    ).fromTo(
+      contentRef.current?.children,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power3.out" },
+      "-=0.5"
+    );
+    return () => tl.kill();
+  }, []);
+
   return (
-    <>
+    <div style={{ background: "#f0efea", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <Nav />
-      <div className="container mx-auto px-6 sm:px-10 lg:px-20 my-16">
-        <div className="max-w-4xl">
-          {/* Heading */}
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold">
-            Contact
+
+      <main className="flex-grow px-6 sm:px-10 lg:px-24 py-16 max-w-7xl mx-auto w-full">
+        {/* Heading */}
+        <div className="overflow-hidden mb-16">
+          <h1
+            ref={headingRef}
+            className="font-bold leading-none"
+            style={{
+              fontSize: "clamp(4rem, 12vw, 10rem)",
+              fontFamily: "'Space Grotesk', sans-serif",
+              letterSpacing: "-0.04em",
+              opacity: 0,
+            }}
+          >
+            Let's<br />Talk
           </h1>
+        </div>
 
-          {/* Intro Text */}
-          <p className="my-6 text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed">
-            Feel free to reach out to me for any project or collaboration. I'm
-            always open to discussing new ideas and opportunities. You can
-            contact me via email at
-          </p>
-
-          {/* Email Button */}
-          <button
-            onClick={() => window.open("mailto:abhisekchowdhury7044@gmail.com")}
-            className="px-6 py-3 border rounded-full text-sm sm:text-base hover:bg-black hover:text-white transition duration-300"
-          >
-            abhisekchowdhury7044@gmail.com
-          </button>
-
-          {/* Phone Section */}
-          <p className="my-6 text-base sm:text-lg lg:text-xl text-gray-600">
-            Or you can call me at
-          </p>
-
-          <button
-            onClick={() => window.open("tel:7044982148")}
-            className="px-6 py-3 border rounded-full text-sm sm:text-base hover:bg-black hover:text-white transition duration-300"
-          >
-            7044982148
-          </button>
-
-          {/* Social Section */}
-          <p className="my-8 text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed">
-            You can also find me on LinkedIn and GitHub. I'm always happy to
-            connect with like-minded professionals and share my work. Let's
-            create something amazing together!
-          </p>
-
-          <div className="flex flex-wrap gap-4">
-            <button
-              onClick={() =>
-                window.open(
-                  "https://www.linkedin.com/in/abhisek-chowdhury-294775210",
-                )
-              }
-              className="px-6 py-3 border rounded-full text-sm sm:text-base hover:bg-blue-600 hover:text-white transition duration-300"
+        <div
+          ref={contentRef}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-16"
+        >
+          {/* Left: Info */}
+          <div className="space-y-12">
+            <p
+              className="text-lg md:text-xl leading-relaxed max-w-md"
+              style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500 }}
             >
-              LinkedIn
-            </button>
+              Got a project in mind? I'd love to hear about it. Let's create something great together.
+            </p>
 
-            <button
-              onClick={() =>
-                window.open("https://github.com/Abhisek-Chowdhury-19")
-              }
-              className="px-6 py-3 border rounded-full text-sm sm:text-base hover:bg-gray-800 hover:text-white transition duration-300"
+            {/* Contact items */}
+            <div className="space-y-6">
+              {[
+                {
+                  label: "Email",
+                  value: "abhisekchowdhury7044@gmail.com",
+                  href: "mailto:abhisekchowdhury7044@gmail.com",
+                  icon: "bi-envelope",
+                },
+                {
+                  label: "Phone",
+                  value: "+91 7044982148",
+                  href: "tel:+917044982148",
+                  icon: "bi-telephone",
+                },
+                {
+                  label: "WhatsApp",
+                  value: "Message me directly",
+                  href: "https://wa.me/917044982148",
+                  icon: "bi-whatsapp",
+                },
+              ].map(({ label, value, href, icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="flex items-center gap-5 group"
+                  style={{ textDecoration: "none" }}
+                >
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-black group-hover:text-white flex-shrink-0"
+                    style={{
+                      border: "1px solid rgba(10,10,10,0.15)",
+                      background: "white",
+                      color: "#0a0a0a",
+                    }}
+                  >
+                    <i className={`bi ${icon} text-base`} />
+                  </div>
+                  <div>
+                    <p
+                      className="text-xs uppercase tracking-widest mb-1"
+                      style={{ color: "#999", fontFamily: "'Inter', sans-serif" }}
+                    >
+                      {label}
+                    </p>
+                    <p
+                      className="text-sm font-medium group-hover:underline"
+                      style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#0a0a0a" }}
+                    >
+                      {value}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            {/* Social links */}
+            <div>
+              <p
+                className="text-xs uppercase tracking-widest mb-5"
+                style={{ color: "#999", fontFamily: "'Inter', sans-serif" }}
+              >
+                Social
+              </p>
+              <div className="flex gap-4">
+                {[
+                  { label: "LinkedIn", href: "https://www.linkedin.com/in/abhisek-chowdhury-294775210", icon: "bi-linkedin" },
+                  { label: "GitHub", href: "https://github.com/Abhisek-Chowdhury-19", icon: "bi-github" },
+                ].map(({ label, href, icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-5 py-3 rounded-full text-sm font-medium transition-all duration-300 hover:bg-black hover:text-white"
+                    style={{
+                      border: "1px solid rgba(10,10,10,0.15)",
+                      background: "white",
+                      color: "#0a0a0a",
+                      fontFamily: "'Inter', sans-serif",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <i className={`bi ${icon}`} />
+                    {label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Big CTA */}
+          <div className="flex flex-col justify-between gap-10">
+            <div
+              className="p-8 sm:p-12 rounded-3xl flex flex-col gap-6"
+              style={{ background: "#0a0a0a" }}
             >
-              GitHub
-            </button>
+              <p
+                className="text-xs uppercase tracking-widest"
+                style={{ color: "#d4ff00", fontFamily: "'Inter', sans-serif" }}
+              >
+                Available for work
+              </p>
+              <h3
+                className="text-2xl sm:text-3xl font-bold leading-tight"
+                style={{
+                  color: "white",
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                Let's build something extraordinary together
+              </h3>
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: "rgba(255,255,255,0.5)", fontFamily: "'Inter', sans-serif" }}
+              >
+                Whether you have a project in mind, want to collaborate, or just want to say hello — my inbox is always open.
+              </p>
+              <a
+                href="mailto:abhisekchowdhury7044@gmail.com"
+                className="inline-flex items-center gap-3 px-7 py-4 rounded-full font-semibold text-sm transition-all duration-300 hover:scale-105 self-start"
+                style={{
+                  background: "#d4ff00",
+                  color: "#0a0a0a",
+                  fontFamily: "'Inter', sans-serif",
+                  textDecoration: "none",
+                  letterSpacing: "0.02em",
+                }}
+              >
+                Send me an email
+                <i className="bi bi-arrow-up-right" />
+              </a>
+
+              {/* Location & time */}
+              <div
+                className="flex items-center gap-3 pt-6 mt-2"
+                style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}
+              >
+                <div
+                  className="w-2 h-2 rounded-full animate-pulse"
+                  style={{ background: "#d4ff00" }}
+                />
+                <p
+                  className="text-xs"
+                  style={{ color: "rgba(255,255,255,0.4)", fontFamily: "'Inter', sans-serif" }}
+                >
+                  Kolkata, India · IST +5:30 · Usually responds within 24h
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </main>
+
       <Footer />
-    </>
+    </div>
   );
 }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Nav from "../components/Nav";
 import workimg1 from "../assets/images/work/ikbf.png";
 import workimg2 from "../assets/images/work/aajkaal.png";
@@ -13,145 +13,307 @@ import workimg10 from "../assets/images/work/thewebtrix.png";
 import workimg11 from "../assets/images/work/skfu.png";
 import workimg12 from "../assets/images/work/5star.png";
 import workimg13 from "../assets/images/work/vrs.png";
-import WorkCard from "../components/WorkCard";
 import Footer from "../components/Footer";
-function Work() {
-  const works = [
-    {
-      title: "International Kolkata Bookfair",
-      description:
-        "A digital ecosystem designed for visitor management and real-time scheduling.",
-      image: workimg1,
-      link: "https://www.kolkatabookfair.net/",
-    },
-    {
-      title: "Aajkaal.in",
-      description:
-        "Developed feature pages for Aajkaal, including a variety of sections like Magazine, Aajkaal Gallery, and Sunday Special.",
-      image: workimg2,
-      link: "https://www.aajkaal.in/",
-    },
-    {
-      title: "The Soumis Can Products",
-      description:
-        "A dynamic website for Soumis Can Products, offering a wide range of products and services.",
-      image: workimg3,
-      link: "https://thesoumiscanproduct.com/",
-    },
-    {
-      title: "Techno Global Hospital Barrackpore",
-      description:
-        "Develop end-to-end web application for Techno Global Hospital Barrackpore from scratch.",
-      image: workimg4,
-      link: "https://www.technoglobalhospital.com/",
-    },
-    {
-      title: "University Alumni Portal",
-      description:
-        "A centralized platform improving alumni–student engagement and data access.",
-      image: workimg5,
-      link: "https://alumni.snumcaj.com/",
-    },
-    {
-      title: "The Hana Beauty",
-      description:
-        "An E-commerce website for The Hana Beauty, offering a wide range of products and services.",
-      image: workimg9,
-      link: "https://thehanabeauty.com/",
-    },
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
-    {
-      title: "Association of Professional Academic Institutions",
-      description:
-        "Develop end-to-end website for Association of Professional Academic Institutions from scratch.",
-      image: workimg8,
-      link: "https://apailive.com/",
-    },
-    {
-      title: "Rotary Techno Netralaya",
-      description:
-        "Develop end-to-end web application for Rotary Techno Netralaya from scratch.",
-      image: workimg6,
-      link: "https://www.rotarytechnonetralaya.com/",
-    },
-    {
-      title: "Techno India University, Tripura",
-      description:
-        "Develop end-to-end website for Techno India University, Tripura from scratch.",
-      image: workimg7,
-      link: "https://www.tiut.ac.in/",
-    },
-    {
-      title: "Techno India SKFU",
-      description:
-        "Develop end-to-end website for Techno India SKFU from scratch.",
-      image: workimg11,
-      link: "https://www.skfuniv.com/",
-    },
-    {
-      title: "The Webtrix",
-      description: "Develop end-to-end website for The Webtrix from scratch.",
-      image: workimg10,
-      link: "https://thewebtrix.co.uk/",
-    },
-    {
-      title: "5 Stars Recovery",
-      description:
-        "Designed and developed a complete web application for a towing and vehicle recovery service. Integrated Google Places API for location-based service requests and improved customer accessibility.",
-      image: workimg12, // use your correct image variable here
-      link: "https://5starsrecovery.co.uk/",
-    },
-    {
-      title: "Romford Vehicle Recovery",
-      description:
-        "Designed and developed a comprehensive vehicle recovery web application, featuring service request forms, real-time location integration, and responsive UI to streamline customer bookings and roadside assistance.",
-      image: workimg13, // replace with your actual imported image variable
-      link: "https://romfordvehiclerecovery.com/",
-    },
-  ];
+gsap.registerPlugin(ScrollTrigger);
+
+const categories = ["All", "Education", "E-Commerce", "Healthcare", "Media", "Event", "Service"];
+
+const works = [
+  {
+    title: "International Kolkata Bookfair",
+    description: "A digital ecosystem designed for visitor management and real-time scheduling.",
+    image: workimg1,
+    link: "https://www.kolkatabookfair.net/",
+    category: "Event",
+    year: "2024",
+  },
+  {
+    title: "Aajkaal.in",
+    description: "Developed feature pages for Aajkaal, including Magazine, Gallery, and Sunday Special sections.",
+    image: workimg2,
+    link: "https://www.aajkaal.in/",
+    category: "Media",
+    year: "2024",
+  },
+  {
+    title: "The Soumis Can Products",
+    description: "A dynamic website offering a wide range of products and services.",
+    image: workimg3,
+    link: "https://thesoumiscanproduct.com/",
+    category: "E-Commerce",
+    year: "2023",
+  },
+  {
+    title: "Techno Global Hospital",
+    description: "End-to-end web application for Techno Global Hospital Barrackpore.",
+    image: workimg4,
+    link: "https://www.technoglobalhospital.com/",
+    category: "Healthcare",
+    year: "2024",
+  },
+  {
+    title: "University Alumni Portal",
+    description: "A centralized platform improving alumni–student engagement and data access.",
+    image: workimg5,
+    link: "https://alumni.snumcaj.com/",
+    category: "Education",
+    year: "2024",
+  },
+  {
+    title: "The Hana Beauty",
+    description: "An E-commerce website offering a wide range of beauty products and services.",
+    image: workimg9,
+    link: "https://thehanabeauty.com/",
+    category: "E-Commerce",
+    year: "2023",
+  },
+  {
+    title: "APAI",
+    description: "End-to-end website for Association of Professional Academic Institutions.",
+    image: workimg8,
+    link: "https://apailive.com/",
+    category: "Education",
+    year: "2024",
+  },
+  {
+    title: "Rotary Techno Netralaya",
+    description: "End-to-end web application for Rotary Techno Netralaya.",
+    image: workimg6,
+    link: "https://www.rotarytechnonetralaya.com/",
+    category: "Healthcare",
+    year: "2023",
+  },
+  {
+    title: "Techno India University, Tripura",
+    description: "End-to-end website for Techno India University, Tripura.",
+    image: workimg7,
+    link: "https://www.tiut.ac.in/",
+    category: "Education",
+    year: "2024",
+  },
+  {
+    title: "Techno India SKFU",
+    description: "End-to-end website for Techno India SKFU.",
+    image: workimg11,
+    link: "https://www.skfuniv.com/",
+    category: "Education",
+    year: "2024",
+  },
+  {
+    title: "The Webtrix",
+    description: "End-to-end website for The Webtrix digital agency.",
+    image: workimg10,
+    link: "https://thewebtrix.co.uk/",
+    category: "Service",
+    year: "2023",
+  },
+  {
+    title: "5 Stars Recovery",
+    description: "Complete web application for a towing and vehicle recovery service with Google Places API integration.",
+    image: workimg12,
+    link: "https://5starsrecovery.co.uk/",
+    category: "Service",
+    year: "2023",
+  },
+  {
+    title: "Romford Vehicle Recovery",
+    description: "Comprehensive vehicle recovery web app with service request forms and real-time location integration.",
+    image: workimg13,
+    link: "https://romfordvehiclerecovery.com/",
+    category: "Service",
+    year: "2023",
+  },
+];
+
+const WorkCard = ({ title, description, image, link, category, year, index }) => {
   return (
-    <div>
-      <Nav />
-      <div className="container mx-auto px-6 sm:px-10 lg:px-16 my-16 sm:my-20">
-        {/* Heading */}
-        <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold tracking-tight">
-          My Work
-        </h1>
-
-        {/* Subtext */}
-        <p
-          className="
-    mt-6 
-    text-base sm:text-lg lg:text-xl 
-    text-zinc-600 
-    max-w-full sm:max-w-xl lg:max-w-2xl
-  "
+    <div
+      onClick={() => window.open(link, "_blank")}
+      className="group cursor-pointer transition-all duration-500 hover:-translate-y-1"
+    >
+      {/* Image block */}
+      <div className="relative overflow-hidden rounded-2xl mb-4" style={{ background: "#e8e7e2" }}>
+        {/* Index badge */}
+        <div
+          className="absolute top-3 left-3 z-10 w-7 h-7 rounded-full flex items-center justify-center text-xs font-mono font-bold"
+          style={{ background: "#0a0a0a", color: "white" }}
         >
-          Things I’ve made trying to put my dent in the universe.
+          {String(index).padStart(2, "0")}
+        </div>
+
+        {/* Category badge */}
+        <div
+          className="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-full text-xs font-semibold"
+          style={{ background: "#d4ff00", color: "#0a0a0a", fontFamily: "'Inter', sans-serif" }}
+        >
+          {category}
+        </div>
+
+        {/* Image — object-contain so nothing gets cropped */}
+        <div
+          style={{
+            height: "200px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "12px",
+            background: "#f0efea",
+          }}
+        >
+          <img
+            src={image}
+            alt={title}
+            className="transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+            style={{ width: "100%", height: "100%", objectFit: "contain" }}
+          />
+        </div>
+
+        {/* Hover overlay CTA */}
+        <div
+          className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style={{ background: "rgba(10,10,10,0.5)", backdropFilter: "blur(4px)" }}
+        >
+          <div
+            className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold"
+            style={{ background: "#d4ff00", color: "#0a0a0a", fontFamily: "'Inter', sans-serif" }}
+          >
+            Visit Site <i className="bi bi-arrow-up-right text-xs" />
+          </div>
+        </div>
+      </div>
+
+      {/* Card footer */}
+      <div className="px-1">
+        <div className="flex justify-between items-start gap-2">
+          <h3
+            className="text-sm font-semibold leading-snug flex-1 min-w-0 group-hover:underline"
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              letterSpacing: "-0.01em",
+              textDecorationThickness: "1px",
+              textUnderlineOffset: "3px",
+            }}
+          >
+            {title}
+          </h3>
+          <span
+            className="text-xs flex-shrink-0"
+            style={{ color: "#bbb", fontFamily: "'Inter', sans-serif" }}
+          >
+            {year}
+          </span>
+        </div>
+        <p className="text-xs mt-1 line-clamp-2" style={{ color: "#999", fontFamily: "'Inter', sans-serif" }}>
+          {description}
+        </p>
+      </div>
+    </div>
+  );
+};
+
+function Work() {
+  const [activeCategory, setActiveCategory] = useState("All");
+  const headingRef = useRef(null);
+  const gridRef = useRef(null);
+
+  const filtered = activeCategory === "All"
+    ? works
+    : works.filter((w) => w.category === activeCategory);
+
+  useEffect(() => {
+    gsap.fromTo(
+      headingRef.current,
+      { y: 60, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: "power4.out", delay: 0.2 }
+    );
+  }, []);
+
+  useEffect(() => {
+    if (!gridRef.current) return;
+    const cards = gridRef.current.querySelectorAll(".work-card-item");
+    gsap.fromTo(
+      cards,
+      { y: 40, opacity: 0, scale: 0.97 },
+      { y: 0, opacity: 1, scale: 1, duration: 0.45, stagger: 0.07, ease: "power3.out" }
+    );
+  }, [filtered.length, activeCategory]);
+
+  return (
+    <div style={{ background: "#f0efea", minHeight: "100vh" }}>
+      <Nav />
+
+      <div className="px-6 sm:px-10 lg:px-20 py-16 max-w-7xl mx-auto">
+        {/* Heading */}
+        <div className="overflow-hidden mb-4">
+          <h1
+            ref={headingRef}
+            className="font-bold leading-none"
+            style={{
+              fontSize: "clamp(4rem, 12vw, 10rem)",
+              fontFamily: "'Space Grotesk', sans-serif",
+              letterSpacing: "-0.04em",
+              opacity: 0,
+            }}
+          >
+            My Work
+          </h1>
+        </div>
+
+        <p
+          className="mb-12 text-base sm:text-lg max-w-xl"
+          style={{ color: "#666", fontFamily: "'Inter', sans-serif" }}
+        >
+          Things I've made trying to put my dent in the universe. {works.length}+ projects across various industries.
         </p>
 
-        {/* Work Cards */}
-        <div
-          className="
-    mt-12
-    grid
-    gap-6 sm:gap-8
-    grid-cols-1 
-    sm:grid-cols-2 
-    lg:grid-cols-3
-  "
-        >
-          {works.map((work, i) => (
-            <WorkCard
-              key={i}
-              index={i + 1}
-              title={work.title}
-              description={work.description}
-              image={work.image}
-              onClick={() => window.open(work.link, "_blank")}
-            />
+        {/* Category Filter */}
+        <div className="flex flex-wrap gap-2 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className="px-4 py-2 rounded-full text-sm font-medium transition-all duration-300"
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                background: activeCategory === cat ? "#0a0a0a" : "white",
+                color: activeCategory === cat ? "white" : "#555",
+                border: "1px solid",
+                borderColor: activeCategory === cat ? "#0a0a0a" : "rgba(10,10,10,0.1)",
+                letterSpacing: "0.02em",
+              }}
+            >
+              {cat}
+              {cat === "All" && (
+                <span
+                  className="ml-1.5 text-xs opacity-60"
+                >
+                  {works.length}
+                </span>
+              )}
+            </button>
           ))}
         </div>
+
+        {/* Card Grid */}
+        <div
+          ref={gridRef}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {filtered.map((work, i) => (
+            <div key={work.title} className="work-card-item">
+              <WorkCard {...work} index={i + 1} />
+            </div>
+          ))}
+        </div>
+
+        {filtered.length === 0 && (
+          <div className="text-center py-20">
+            <p style={{ color: "#aaa", fontFamily: "'Inter', sans-serif" }}>No projects found.</p>
+          </div>
+        )}
       </div>
 
       <Footer />

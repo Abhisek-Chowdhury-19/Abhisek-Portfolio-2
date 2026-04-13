@@ -10,7 +10,7 @@ export default function TextSplitter({
       : type === "line"
       ? text.split("\n")
       : text.split(" ");
-  console.log(items);
+  // items logged removed
   className = className + " inline-block mb-[-1rem] ";
   return (
     <>

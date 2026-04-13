@@ -15,31 +15,30 @@ const WorkCard = ({ index, title, description, image, onClick }) => {
         hover:shadow-2xl
       "
     >
-      {/* Image */}
-      <div className="relative overflow-hidden bg-gray-50">
+      {/* Image: fixed height + object-contain to prevent any cropping */}
+      <div
+        className="relative overflow-hidden"
+        style={{
+          height: "220px",
+          background: "#f5f5f0",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <img
           src={image}
           alt={title}
-          className="
-            aspect-video 
-            w-full 
-            object-cover 
-            transition-transform 
-            duration-700 
-            ease-out
-            group-hover:scale-110
-          "
+          className="transition-transform duration-700 ease-out group-hover:scale-105"
+          style={{
+            maxWidth: "100%",
+            maxHeight: "100%",
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+          }}
         />
-
-        <div
-          className="
-          absolute inset-0 
-          bg-black/0 
-          group-hover:bg-black/10 
-          transition-colors 
-          duration-500
-        "
-        />
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500" />
       </div>
 
       {/* Content */}

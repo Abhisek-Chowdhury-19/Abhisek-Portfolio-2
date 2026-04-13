@@ -1,119 +1,217 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function About() {
+  const headingRef = useRef(null);
+  const bioRef = useRef(null);
+  const tagsRef = useRef(null);
+
   const techStack = {
-    "Languages & Frameworks": [
-      "PHP",
-      "Laravel 12",
-      "JavaScript",
-      "React",
-      "Node.js",
-      "Express.js",
-    ],
+    "Languages & Frameworks": ["PHP", "Laravel 12", "JavaScript", "React", "Node.js", "Express.js"],
     "Web Animations": ["GSAP", "Framer Motion"],
-    "Databases & State": [
-      "MySQL",
-      "MongoDB",
-      "Relational Databases",
-      "Non-Relational Databases",
-      "REST API",
-    ],
-    "DevOps & Cloud": ["CI/CD", "VPS"],
+    "Databases & State": ["MySQL", "MongoDB", "REST API"],
+    "DevOps & Cloud": ["CI/CD", "VPS", "Linux"],
     "UI & Styling": ["Tailwind CSS", "Bootstrap", "CSS"],
-    "Tools & Platforms": ["Git", "Github", "VS Code", "Postman"],
+    "Tools & Platforms": ["Git", "GitHub", "VS Code", "Postman"],
+  };
+
+  useEffect(() => {
+    // Heading reveal
+    gsap.fromTo(
+      headingRef.current,
+      { y: 60, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: "power4.out", delay: 0.2 }
+    );
+
+    // Bio stagger
+    const paras = bioRef.current?.querySelectorAll("p");
+    gsap.fromTo(
+      paras,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: "power3.out", delay: 0.5 }
+    );
+
+    // Tech tags
+    const tags = tagsRef.current?.querySelectorAll(".skill-tag");
+    gsap.fromTo(
+      tags,
+      { scale: 0.8, opacity: 0 },
+      {
+        scale: 1,
+        opacity: 1,
+        duration: 0.4,
+        stagger: 0.04,
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+          trigger: tagsRef.current,
+          start: "top 75%",
+        },
+      }
+    );
+
+    return () => ScrollTrigger.killAll();
+  }, []);
+
+  const categoryIcons = {
+    "Languages & Frameworks": "⚡",
+    "Web Animations": "✦",
+    "Databases & State": "◈",
+    "DevOps & Cloud": "◎",
+    "UI & Styling": "◐",
+    "Tools & Platforms": "⊕",
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div style={{ background: "#f0efea", minHeight: "100vh" }}>
       <Nav />
-      {/* Main Container: Adjusted padding for mobile (px-6) vs desktop (lg:px-24) */}
-      <main className="container mx-auto px-6 py-12 md:py-24 flex-grow">
-        {/* Title: Fluid font size */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8">
-          About Me
-        </h1>
 
-        {/* Bio Section: Fixed 'class' to 'className' for React */}
-        <div className="text-base md:text-lg text-gray-700 leading-relaxed tracking-wide max-w-4xl">
-          <p className="mb-6">
-            I’m{" "}
-            <span className="font-semibold text-gray-900">
-              Abhisek Chowdhury
-            </span>
-            , a{" "}
-            <span className="font-semibold">Full-Stack Software Developer</span>{" "}
-            with{" "}
-            <span className="font-semibold">
-              2.8+ years of hands-on experience
-            </span>{" "}
-            building scalable, secure, and high-performance web applications. I
-            specialize in{" "}
-            <span className="font-semibold">
-              PHP, Laravel, React, and MySQL
-            </span>
-            .
-          </p>
-
-          <p className="mb-6">
-            Currently, I work as a{" "}
-            <span className="font-semibold">
-              Full Stack Web Developer at Sister Nivedita University
-            </span>
-            , where I led the development of the official{" "}
-            <span className="font-semibold">
-              International Kolkata Book Fair (IKBF)
-            </span>{" "}
-            platform. I’ve also built Alumni Portals, Attendance & Marks
-            Management systems, and delivered production-ready solutions across
-            various sectors.
-          </p>
-
-          <p className="mb-6">
-            Previously, I worked at{" "}
-            <span className="font-semibold">The Webtrix Limited</span>. I also
-            have a strong interest in{" "}
-            <span className="font-semibold">web security</span> and responsibly
-            reported a critical open directory indexing vulnerability on a live
-            production system.
-          </p>
+      <main className="px-6 sm:px-10 lg:px-24 py-16 max-w-7xl mx-auto">
+        {/* Hero heading */}
+        <div className="overflow-hidden mb-16">
+          <h1
+            ref={headingRef}
+            className="font-bold leading-none"
+            style={{
+              fontSize: "clamp(4rem, 12vw, 10rem)",
+              fontFamily: "'Space Grotesk', sans-serif",
+              letterSpacing: "-0.04em",
+              opacity: 0,
+            }}
+          >
+            About<br />Me
+          </h1>
         </div>
 
-        {/* Section Header */}
-        <div className="mt-20">
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
-            Technology Arsenal
-          </h2>
-          <p className="mt-4 text-lg text-gray-600 max-w-2xl">
-            A comprehensive toolkit for building modern, scalable applications.
-          </p>
-        </div>
+        {/* Bio grid */}
+        <div ref={bioRef} className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24">
+          <div className="space-y-6">
+            <p
+              className="text-lg md:text-xl leading-relaxed"
+              style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500 }}
+            >
+              I'm{" "}
+              <span
+                className="px-1"
+                style={{
+                  background: "#d4ff00",
+                  color: "#0a0a0a",
+                  fontWeight: 700,
+                  borderRadius: "4px",
+                }}
+              >
+                Abhisek Chowdhury
+              </span>
+              , a Full-Stack Software Developer with 2.8+ years of hands-on experience building scalable, secure, and high-performance web applications.
+            </p>
 
-        {/* Tech Stack Grid: 1 col on mobile, 2 on tablet, 3 on desktop */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-y-16">
-          {Object.entries(techStack).map(([category, items]) => (
-            <div key={category} className="flex flex-col">
-              <h3 className="text-xl font-semibold mb-5 text-gray-900 border-l-4 border-black pl-3">
-                {category}
-              </h3>
+            <p
+              className="text-base md:text-lg leading-relaxed"
+              style={{ color: "#555", fontFamily: "'Inter', sans-serif" }}
+            >
+              I specialize in{" "}
+              <strong style={{ color: "#0a0a0a" }}>PHP, Laravel, React, and MySQL</strong>. Currently working as a Full Stack Web Developer at{" "}
+              <strong style={{ color: "#0a0a0a" }}>Sister Nivedita University</strong>, where I led the development of the official IKBF platform, Alumni Portals, and Attendance & Marks Management systems.
+            </p>
 
-              <div className="flex flex-wrap gap-2 md:gap-3">
-                {items.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="px-4 py-2 rounded-full border border-gray-300 text-xs md:text-sm font-medium
-                             text-gray-800 hover:bg-black hover:text-white
-                             transition duration-300 ease-out cursor-default bg-white"
-                  >
-                    {tech}
-                  </span>
-                ))}
+            <p
+              className="text-base md:text-lg leading-relaxed"
+              style={{ color: "#555", fontFamily: "'Inter', sans-serif" }}
+            >
+              Previously at{" "}
+              <strong style={{ color: "#0a0a0a" }}>The Webtrix Limited</strong>. I have a strong interest in{" "}
+              <strong style={{ color: "#0a0a0a" }}>web security</strong> and responsibly reported a critical open directory indexing vulnerability on a live production system.
+            </p>
+          </div>
+
+          {/* Stats sidebar */}
+          <div className="flex flex-col gap-8">
+            {[
+              { label: "Years of Experience", value: "2.8+", note: "Building real-world products" },
+              { label: "Projects Completed", value: "30+", note: "Across various industries" },
+              { label: "Countries Served", value: "UK + IN", note: "International clients" },
+            ].map(({ label, value, note }) => (
+              <div
+                key={label}
+                className="p-6 rounded-2xl"
+                style={{ background: "rgba(10,10,10,0.04)", border: "1px solid rgba(10,10,10,0.06)" }}
+              >
+                <p
+                  className="text-xs uppercase tracking-widest mb-2"
+                  style={{ color: "#999", fontFamily: "'Inter', sans-serif" }}
+                >
+                  {label}
+                </p>
+                <p
+                  className="font-bold text-4xl sm:text-5xl"
+                  style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: "-0.04em" }}
+                >
+                  {value}
+                </p>
+                <p
+                  className="text-sm mt-2"
+                  style={{ color: "#888", fontFamily: "'Inter', sans-serif" }}
+                >
+                  {note}
+                </p>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        {/* Tech Arsenal */}
+        <div className="mb-20">
+          <div className="mb-12">
+            <p
+              className="text-xs uppercase tracking-widest mb-3"
+              style={{ color: "#999", fontFamily: "'Inter', sans-serif" }}
+            >
+              Skills & Tech
+            </p>
+            <h2
+              className="font-bold leading-none"
+              style={{
+                fontSize: "clamp(2.5rem, 6vw, 5rem)",
+                fontFamily: "'Space Grotesk', sans-serif",
+                letterSpacing: "-0.04em",
+              }}
+            >
+              Technology Arsenal
+            </h2>
+          </div>
+
+          <div
+            ref={tagsRef}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+          >
+            {Object.entries(techStack).map(([category, items]) => (
+              <div key={category} className="flex flex-col">
+                <div className="flex items-center gap-2 mb-5">
+                  <span className="text-lg">{categoryIcons[category]}</span>
+                  <h3
+                    className="text-sm font-semibold uppercase tracking-widest"
+                    style={{ fontFamily: "'Inter', sans-serif", color: "#0a0a0a" }}
+                  >
+                    {category}
+                  </h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {items.map((tech, i) => (
+                    <span key={i} className="skill-tag" style={{ opacity: 0 }}>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </main>
+
       <Footer />
     </div>
   );
