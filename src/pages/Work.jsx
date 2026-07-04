@@ -13,13 +13,18 @@ import workimg10 from "../assets/images/work/thewebtrix.png";
 import workimg11 from "../assets/images/work/skfu.png";
 import workimg12 from "../assets/images/work/5star.png";
 import workimg13 from "../assets/images/work/vrs.png";
+import workimg14 from "../assets/images/work/a2z.png";
+import workimg15 from "../assets/images/work/galleria.png";
+import workimg16 from "../assets/images/work/thesnuc.png";
+import workimg17 from "../assets/images/work/ems.png";
+import workimg18 from "../assets/images/work/applelab.png";
 import Footer from "../components/Footer";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const categories = ["All", "Education", "E-Commerce", "Healthcare", "Media", "Event", "Service"];
+const categories = ["All", "Education", "E-Commerce", "Healthcare", "Media", "Event", "Service", "Web Application"];
 
 const works = [
   {
@@ -125,6 +130,47 @@ const works = [
     link: "https://romfordvehiclerecovery.com/",
     category: "Service",
     year: "2023",
+  },
+  {
+    title: "SNU Galleria",
+    description: "Trusted source for premium university merchandise.",
+    image: workimg15,
+    link: "https://galleria.snuniv.ac.in/",
+    category: "Education",
+    year: "-",
+  },
+  {
+    title: "A2z Transferz",
+    description: "Greater Manchester's reliable airport taxi service with local expertise and national reach. We define premium travel through reliability, punctuality, and first-class service.",
+    image: workimg14,
+    link: "https://a2ztransferz.co.uk/",
+    category: "Service",
+    year: "-",
+  },
+
+  {
+    title: "The SNU Chronicle",
+    description: "Stay updated with the latest events and locations around the Sister Nivedita University campus.",
+    image: workimg16,
+    link: "https://www.thesnuchronicle.com/",
+    category: "Media",
+    year: "-",
+  },
+  {
+    title: "SNU Equipment Management System",
+    description: "Internal Software to manage university assets",
+    image: workimg17,
+    link: "https://ems.snmcaj.com/",
+    category: "Web Application",
+    year: "-",
+  },
+  {
+    title: "Lab Booking Application for University",
+    description: "Internal Software to lab booking",
+    image: workimg18,
+    link: "https://applelab.snmcaj.com/",
+    category: "Web Application",
+    year: "-",
   },
 ];
 
