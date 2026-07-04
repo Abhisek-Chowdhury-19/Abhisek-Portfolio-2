@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Disallow specific private paths if any
+# Disallow: /private/
+
+Sitemap: https://abhisek.space/sitemap.xml
